@@ -33,7 +33,11 @@ for message in consumer:
     disease = event["disease"]
     treatment = event["treatment"]
     cost = event["cost"]
-    visit_time = datetime.now()
+    visit_time_str = event.get("visit_time")
+    if visit_time_str:
+        visit_time = datetime.strptime(visit_time_str, '%Y-%m-%d %H:%M:%S')
+    else:
+        visit_time = datetime.now()
 
     cursor.execute(
         """
