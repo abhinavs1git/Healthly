@@ -4,6 +4,7 @@ import random
 import time
 from faker import Faker
 import mysql.connector
+from datetime import datetime, timedelta
 
 fake = Faker()
 
@@ -30,6 +31,10 @@ diseases = ["Flu", "Covid", "Diabetes", "Heart Disease"]
 disease_weights = [40, 20, 30, 10]
 treatments = ["Medication", "Surgery", "Therapy", "Observation"]
 
+start_date = datetime(2023, 1, 1)
+end_date = datetime(2025, 12, 31)
+date_range = (end_date - start_date).days
+
 while True:
 
     patient_id = random.randint(1,5000)
@@ -37,11 +42,16 @@ while True:
     treatment = random.choice(treatments)
     cost = random.randint(1000, 100000)
 
+    random_days = random.randint(0, date_range)
+    random_seconds = random.randint(0, 86400)
+    visit_time = start_date + timedelta(days=random_days, seconds=random_seconds)
+
     event = {
         "patient_id": patient_id,
         "disease": disease,
         "treatment": treatment,
-        "cost": cost
+        "cost": cost,
+        "visit_time": visit_time.strftime('%Y-%m-%d %H:%M:%S')
     }
 
     producer.send("patient_visits", event)
