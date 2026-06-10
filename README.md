@@ -75,3 +75,13 @@ python producer.py
 
 ### 5. Analytics (PowerBI)
 Open PowerBI and connect to the MySQL `healthly` database. Build visualization dashboards by establishing relationships between `fact_visits` and dimension tables like `dim_patient` and `dim_diagnosis`.
+
+Dashboard Page 1: Hospital Overview
+
+<img width="1371" height="777" alt="image" src="https://github.com/user-attachments/assets/2b6bff23-17e3-4cff-b9bc-b1c68462f892" />
+
+Dashboard Page 2: Revenue Overview
+
+<img width="1374" height="774" alt="image" src="https://github.com/user-attachments/assets/ebdcb6e4-9244-43fe-8809-f0420c233c21" />
+
+
